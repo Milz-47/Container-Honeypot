@@ -33,9 +33,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy code and set permissions
-COPY honeypot.py .
-# Optionally copy a persistent host key into the image or mount at runtime
-# COPY server.key .
+COPY basic_ssh_honeypot.py
+
+((NOTE - This code worked with Docker 4.48 [most current version when this was published was 4.7]))
 
 EXPOSE 2222
 
