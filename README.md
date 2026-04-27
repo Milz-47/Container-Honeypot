@@ -110,4 +110,4 @@ Host key generation uses Paramiko RSAKey.generate(2048) if server.key missing.
 Session IDs are MD5 of addr+time (non-cryptographic identifier only).
 
 **License**
-Include your preferred license (e.g., MIT) in a LICENSE file.
+GNU GENERAL PUBLIC LICENSE - Version 3, 29 June 2007.
