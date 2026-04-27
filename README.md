@@ -39,7 +39,7 @@ COPY basic_ssh_honeypot.py
 
 EXPOSE 2222
 
-CMD ["python", "honeypot.py"]
+CMD ["python", "basic_ssh_honeypot.py"]
 requirements.txt
 
 
