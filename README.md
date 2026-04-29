@@ -21,42 +21,33 @@ honeypot.log — text logfile (logging module)
 honeypot.json — structured JSONL logfile (one JSON object per line)
 Quick start (Docker)
 
-Dockerfile
-
+**Dockerfile**
 
 FROM python:3.12-slim
-
 WORKDIR /app
-
-# Install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt
+Install dependencies (RUN pip install) - PARAMIKO
 
 # Copy code and set permissions
 COPY basic_ssh_honeypot.py
 
-((NOTE - This code worked with Docker 4.48 [most current version when this was published was 4.7]))
+((NOTE - This code worked with Docker 4.48 [most current version when this was built was 4.7 - this was run in a Win11 VM]))
 
 EXPOSE 2222
 
 CMD ["python", "basic_ssh_honeypot.py"]
 requirements.txt
 
-
-paramiko>=2.11
+paramiko>=3
 Build the image:
-
 
 docker build -t ssh-honeypot:latest .
 Run the container (bind port and persist logs/host key):
 
-
 docker run -d \
   --name ssh-honeypot \
   -p 2222:2222 \
-  -v /path/on/host/honeypot.json:/app/honeypot.json \
-  -v /path/on/host/server.key:/app/server.key \
-  ssh-honeypot:latest
+  
 Notes:
 
 Mount a host directory/file for honeypot.json to retain logs outside the container.
